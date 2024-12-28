@@ -2,8 +2,7 @@ const express = require('express');
 const studentModel = require('../models/student-model');
 const jwt = require("jsonwebtoken");
 const cookieParser =  require("cookie-parser");
-const bcrypt = require('bcrypt');
-
+const generateToken = require("../utils/generateToken");
 
  module.exports.registerStudent = async function(req,res){
     try{
@@ -21,9 +20,30 @@ const bcrypt = require('bcrypt');
             section,
             branch
         })
-        
+        res.redirect("/");
     }
     }catch(err){
         console.log(err);
     }
  }
+
+module.exports.loginStudent = function(req,res){
+    try{
+        let { usn, password} = req.body;
+        if(password == null){
+            let searchStudent = studentModel.findOne({usn})
+            if(searchStudent){
+                let token = generateToken(searchStudent);
+                res.cookie("token", token);
+                res.redirect("/");
+            }else{
+                res.redirect("/");
+            }
+        }
+        if(password!=null){
+            let searchStudent = studentModel.findOne({usn});
+        }
+    }catch(err){
+        console.log(err);
+    }
+}
