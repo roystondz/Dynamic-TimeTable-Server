@@ -8,7 +8,7 @@ module.exports = async function (req,res,next){
         res.redirect("/");
     }
     try{
-        let decodedKey = jwt.verify(req,cookies.token,process.env.JWT_KEY);
+        let decodedKey = jwt.verify(req.cookies.token,process.env.JWT_KEY);
         let searchStudent = await studentModel.findOne({usn:decodedKey.usn});
         req.student=student;
         next();
