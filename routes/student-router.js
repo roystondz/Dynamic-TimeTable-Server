@@ -8,7 +8,13 @@ router.get("/",function(req,res){
 
 router.post("/register",registerStudent);
 router.post("/login",loginStudent);
+router.get("/login",function(req,res){
+    res.redirect("http://localhost:5173/login");
+})
 
+router.get("/register",function(req,res){
+    res.json({url:"http://localhost:5173/register"});
+})
 
 router.get("/logout",logout);
 
