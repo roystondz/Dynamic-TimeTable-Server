@@ -47,3 +47,8 @@ module.exports.loginStudent = function(req,res){
         console.log(err);
     }
 }
+
+module.exports.logout=function(req,res){
+    res.cookie("token","");
+    res.redirect("/");
+}
