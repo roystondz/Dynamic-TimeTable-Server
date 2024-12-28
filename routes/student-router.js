@@ -8,8 +8,10 @@ router.get("/",function(req,res){
 
 router.post("/register",registerStudent);
 router.post("/login",loginStudent);
+
+//dynamic loading of links for login and register
 router.get("/login",function(req,res){
-    res.redirect("http://localhost:5173/login");
+    res.json({url:"http://localhost:5173/"});
 })
 
 router.get("/register",function(req,res){
