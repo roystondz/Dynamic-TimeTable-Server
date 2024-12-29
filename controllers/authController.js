@@ -33,8 +33,8 @@ module.exports.loginStudent = function(req,res){
         if(password == null){
             let searchStudent = studentModel.findOne({usn})
             if(searchStudent){
-                let token = generateToken(searchStudent);
-                res.cookie("token", token);
+                //let token = generateToken(searchStudent);
+                //res.cookie("token", token);
                 res.redirect("/");
             }else{
                 res.redirect("/");
