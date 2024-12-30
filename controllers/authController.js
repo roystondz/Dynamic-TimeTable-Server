@@ -27,11 +27,11 @@ const generateToken = require("../utils/generateToken");
     }
  }
 
-module.exports.loginStudent = function(req,res){
+module.exports.loginStudent = async function(req,res){
     try{
         let { usn, password} = req.body;
         if(password == null){
-            let searchStudent = studentModel.findOne({usn})
+            let searchStudent = await studentModel.findOne({usn})
             if(searchStudent){
                 //let token = generateToken(searchStudent);
                 //res.cookie("token", token);
