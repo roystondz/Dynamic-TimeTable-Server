@@ -41,7 +41,7 @@ module.exports.loginStudent = async function(req,res){
             }
         }
         if(password!=null){
-            let searchStudent = studentModel.findOne({usn});
+            let searchStudent = await studentModel.findOne({usn});
         }
     }catch(err){
         console.log(err);
