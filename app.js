@@ -23,9 +23,11 @@ app.use(cors({
 
 const index =  require("./routes/index");
 const studentRouter=require("./routes/student-router");
+const adminRouter = require("./routes/admin-router");
 
 app.use("/",index);
 app.use("/student",studentRouter);
+app.use("/admin",adminRouter);
 
 app.listen(3000,()=>{
     console.log("server is running on port 3000");
